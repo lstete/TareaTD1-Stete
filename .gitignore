@@ -1,0 +1,17 @@
+# Archivos temporales de simulación
+build/
+*.vcd
+*.out
+*.vvp
+*.log
+
+# Testbenches intermedios (solo se sube tb_verificador_legajo.v)
+tb_resto.v
+tb_datapath.v
+
+# En Esquema, solo se conservan las imágenes del README (Módulo.png, SEÑAL 1.png, SEÑAL 2 Y 3.png)
+Esquema/Project Backups/
+Esquema/*.workspace
+Esquema/*.pdsprj*
+Esquema/*.BMP
+Esquema/*.bmp
