@@ -46,6 +46,7 @@ module verificador_legajo (
 
 ### 2.2. UC (Unidad de Control)
 
+```verilog
 module UC( 
     input  wire clk, 
     input  wire ARST,
@@ -58,11 +59,13 @@ module UC(
     output reg  busy,
     output reg  done
 );
+```
 
  Es una máquina de estados que tiene como entrada los valores del módulo top: start y valid, pero además usa las señales de estado restando y ready para saber cuándo se recibió el 6to dígito y cuándo el calculador de restos iterativo terminó de restar. 
 
 ### 2.3. datapath
 
+```verilog
 module datapath (
     input  clk,
     input  ARST,
@@ -73,12 +76,14 @@ module datapath (
     output TC,             // Con esto sé cuándo le dí todos los dígitos necesarios
     output ready           // Me indica cuándo tengo el dígito verificador listo para leer
 );
+```
 
  Este módulo reúne los circuitos que generan operaciones, similar a una ALU, recibe señales de control que le dicen qué operacion hacer y la entrega, si se le da un pulso, toma el dato del módulo top y lo va acumululando, en este caso decidí que haga automáticamente la resta.
   Una alternativa pudo haber sido que tenga una señal de estado que dé la cuenta del contador así la UC sabe por dónde va y decide cuándo restar con otra señal. Pero me pareció más simple así.
 
 ### 2.4. acumulador_ponderado
 
+```verilog
 module acumulador_ponderado (
     input  clk,
     input  EN,
@@ -88,11 +93,13 @@ module acumulador_ponderado (
     input  [3:0] b,
     output [7:0] acumulado
 );
+```
 
 Este módulo resultó sencillo de implementar en verilog, constó en instanciar el registro de 8 bits que diseñé exponiendo el arst y dándole la opción de clean, en este caso poniendo en 1 la señal de load que tiene un 0 fijo. Pude haber cambiado el EN a acumular pero en el momento no se me ocurrió.
 
 ### 2.5. contador
 
+```verilog
 module contador (
     input clk,
     input ARST,
@@ -101,11 +108,13 @@ module contador (
     output reg [3:0]count,
     output TC
 );
+```
 
 Es simplemente un contador de 7 a 2 que lo uso para controlar por cuál dígito voy pero a su vez me sirve como dígito ponderador, de otro modo tendría que haber hecho un contador de 0 a 5 por ejemplo y asignar un mux que decida cuál es el valor en cada caso. 
 
 ### 2.6. resto
 
+```verilog
 module resto (
     input  clk, 
     input  START, ARST,
@@ -114,6 +123,7 @@ module resto (
     output [7:0] resto,
     output reg busy, ready
 );
+```
 
 Este es el módulo que más me costó porque fue con la primera MdE que practiqué, instancio dos registros de 8 bits, pude haberlo hecho con un segundo registro de 4 bits sabiendo que siempre haría la división por 11, pero me pareció buena idea hacerlo un poco más genérico.
 Es una MdE que cuando recibe START captura a y b, solo que a como es el número a restar, queda en resto. Y se le va aplicando sucesivas restas hasta que el resto sea menor que b. 
@@ -122,6 +132,7 @@ Por otro lado notifica cuándo está trabajando y cuándo terminó.
 
 ### 2.7. registro8
 
+```verilog
 module registro8 (
     input clk,
     input ARST,
@@ -131,6 +142,7 @@ module registro8 (
     input [7:0] d,
     output reg [7:0] q
 );
+```
 
 Para poder entenderlo mejor hice un módulo de registro para instanciarlo las veces que lo necesite, porque cuando hacía la MdE de resto me confundía tener la parte secuencial de los estados más la de los registros. Y fue una opción que me terminó resultando muy cómoda.
 
