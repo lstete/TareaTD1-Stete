@@ -25,6 +25,7 @@ A nivel top es el módulo propuesto por la actividad y a nivel interno es cómo 
 ![Cronograma de Señales 2 y 3](<Esquema/SEÑAL 2 Y 3.png>)
 
 Funciona según lo esperado, también realicé pruebas para probar casos de posible error o más reales donde valid no siempre llega de forma sucesiva, de todas formas el caso que más miedo me daba era el en el que valid llegaba seguido, pues la acumulación se tenía que hacer consecutiva.
+No los agregué al TB para no extenderlo.
 
 ## 2. Descripción de Módulos
 
@@ -62,6 +63,10 @@ module UC(
 ```
 
  Es una máquina de estados que tiene como entrada los valores del módulo top: start y valid, pero además usa las señales de estado restando y ready para saber cuándo se recibió el 6to dígito y cuándo el calculador de restos iterativo terminó de restar. 
+
+#### Diagrama de estados (provisto por la documentación de TerosHDL)
+
+![Diagrama de estados UC](<Esquema/fsm_UC_00.svg>) 
 
 ### 2.3. datapath
 
@@ -128,6 +133,10 @@ module resto (
 Este es el módulo que más me costó porque fue con la primera MdE que practiqué, instancio dos registros de 8 bits, pude haberlo hecho con un segundo registro de 4 bits sabiendo que siempre haría la división por 11, pero me pareció buena idea hacerlo un poco más genérico.
 Es una MdE que cuando recibe START captura a y b, solo que a como es el número a restar, queda en resto. Y se le va aplicando sucesivas restas hasta que el resto sea menor que b. 
 Por otro lado notifica cuándo está trabajando y cuándo terminó. 
+
+#### Diagrama de estados (provisto por la documentación de TerosHDL)
+
+![Diagrama de estados resto](<Esquema/fsm_resto_00.svg>) 
 
 
 ### 2.7. registro8

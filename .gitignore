@@ -9,9 +9,12 @@ build/
 tb_resto.v
 tb_datapath.v
 
-# En Esquema, solo se conservan las imágenes del README (Módulo.png, SEÑAL 1.png, SEÑAL 2 Y 3.png)
+# En Esquema, solo se conservan las imágenes y diagramas del README
 Esquema/Project Backups/
 Esquema/*.workspace
 Esquema/*.pdsprj*
 Esquema/*.BMP
 Esquema/*.bmp
+Esquema/*.md
+Esquema/resto.svg
+Esquema/UC.svg
