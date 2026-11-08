@@ -29,7 +29,7 @@ Funciona según lo esperado, también realicé pruebas para probar casos de posi
 ## 2. Descripción de Módulos
 
 ### 2.1. verificador_legajo (Top)
-´´´verilog
+'''verilog
 module verificador_legajo ( 
     input  wire clk, 
     input  wire arst,
@@ -39,7 +39,7 @@ module verificador_legajo (
     output wire  busy, 
     output wire  done, 
     output wire  [3:0] verificador
-);´´´
+);'''
 
  Es el módulo con la estructura propuesta por la tarea, mantuve todo exceptuando las salidas que las pasé de reg a wire.
 
