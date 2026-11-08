@@ -17,6 +17,7 @@ A dicha suma se le calcula el resto de la división entera por 11 mediante un re
 
 
 A nivel top es el módulo propuesto por la actividad y a nivel interno es cómo se me ocurrió manejar la UC y el datapath, hay una aclaración de las posibles variaciones en la descripción del datapath.
+Únicamente uní la UC con el datapath y expuse las salidas y entradas necesarias. 
 
 ### Cronogramas Temporales de Referencia
 
