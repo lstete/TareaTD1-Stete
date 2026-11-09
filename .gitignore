@@ -1,5 +1,6 @@
 # Archivos temporales de simulación
 build/
+work/
 *.vcd
 *.out
 *.vvp
