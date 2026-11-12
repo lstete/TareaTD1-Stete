@@ -175,7 +175,7 @@ Teniendo en cuenta que el máximo es 243, al dividir por 11 se le puede aplicar 
 
 ### d. ¿Qué registros conservan su valor cuando valid = 0 durante la recepción?
 
-En principio el registro de estado, que guarda en qué estado está la MdE. Después el contador del acumulador y el acumulador. Si valid es 0 ya después del 6to dígito, intervienen los registros del restador.
+En principio el registro de estado, que guarda en qué estado está la MdE. Después el contador del acumulador y el acumulador. Si valid es 0 ya después del 6to dígito, intervienen los registros del restador (dos registros de 8 bits de los que armé con load y enable, y un registro de estado ya que lo implementé con una MdE).
 
 ### e. ¿Por qué los restos 0 y 10 producen el mismo dígito verificador?
 
